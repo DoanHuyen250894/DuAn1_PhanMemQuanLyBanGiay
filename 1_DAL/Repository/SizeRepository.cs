@@ -9,37 +9,37 @@ using System.Threading.Tasks;
 
 namespace _1_DAL.Repository
 {
-    internal class SizeRepository : ISizeRepository
+    public class SizeRepository : ISizeRepository
     {
         private QuanLyBanHangGiayContext _dbContext;
-        private List<Size> _lstSize;
+        private List<KichThuoc> _lstSize;
         public SizeRepository()
         {
             _dbContext = new QuanLyBanHangGiayContext();
-            _lstSize = new List<Size>();
+            _lstSize = new List<KichThuoc>();
         }
 
-        public bool Add(Size obj)
+        public bool Add(KichThuoc obj)
         {
             _dbContext.Sizes.Add(obj);
             _dbContext.SaveChanges();
             return true;
         }
 
-        public bool Delete(Size obj)
+        public bool Delete(KichThuoc obj)
         {
             _dbContext.Sizes.Remove(obj);
             _dbContext.SaveChanges();
             return true;
         }
 
-        public List<Size> GetAll()
+        public List<KichThuoc> GetAll()
         {
             _lstSize = _dbContext.Sizes.ToList();
             return _lstSize;
         }
 
-        public bool Update(Size obj)
+        public bool Update(KichThuoc obj)
         {
             _dbContext.Sizes.Update(obj);
             _dbContext.SaveChanges();

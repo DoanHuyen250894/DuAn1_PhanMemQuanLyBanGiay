@@ -15,20 +15,9 @@ namespace _1_DAL.Configurations
         {
             builder.ToTable("KhachHang");
             builder.HasKey(x => x.ID);
-           
-           
-            builder.Property(x=>x.Ho).IsRequired().HasMaxLength(20);
-            builder.Property(x => x.TenDem).IsRequired().HasMaxLength(20);
-            builder.Property(x => x.Ten).IsRequired().HasMaxLength(20);
+            builder.Property(x=>x.HovaTen).IsRequired().HasMaxLength(20);
             builder.Property(x => x.Poin);
-            builder.Property(x=>x.SDT).IsRequired().HasMaxLength(10);
-            builder.Property(x => x.GioiTinh).IsRequired();
-            builder.Property(x=>x.TrangThai).IsRequired();
-            builder.Property(x => x.NgaySinh);
-            builder.Property(x => x.DiaChi);
-            builder.Property(x => x.ThanhPho);
-            builder.Property(x => x.QuocGia);
-
+            builder.Property(x => x.SDT).IsRequired().HasMaxLength(10);
         }
     }
 }

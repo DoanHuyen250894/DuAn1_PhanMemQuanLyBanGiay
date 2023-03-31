@@ -13,132 +13,66 @@ namespace _2_BUS.Services
 {
     public class KhachHangServices : IKhachHangServices
     {
-        private IKhachHangRepository _khachHangRepository;
+        private IKhachHangRepository _IkhachHangRepository;
+        List<KhachHang> _lstKhachHang;
+        List<ViewKhachHang> _lstViewKhachHang;
         public KhachHangServices()
         {
-            _khachHangRepository= new KhachHangRepository();
-        }
-        public string Add(ViewKhachHang obj)
-        {
-            if (obj == null)
-            {
-                return "Không thành công";
-            }
-            var KH = new KhachHang() { 
-            ID = obj.ID,
-                Poin = obj.Poin,
-                Ten = obj.Ten,
-                Ho = obj.Ho,
-                TenDem = obj.TenDem,
-                NgaySinh = obj.NgaySinh,
-                SDT = obj.SDT,
-               
-                GioiTinh = obj.GioiTinh,
-                DiaChi = obj.DiaChi,
-                ThanhPho = obj.ThanhPho,
-                QuocGia = obj.QuocGia,
-                
-            };
-            if (_khachHangRepository.Add(KH)) return "Thêm thành công";
-            return "Không thành công";
-
+            _IkhachHangRepository = new KhachHangRepository();
+            _lstKhachHang = new List<KhachHang>();
+            _lstViewKhachHang = new List<ViewKhachHang>();
         }
 
-        public string Delete(ViewKhachHang obj)
+        public bool Add(ViewKhachHang obj)
         {
-            if (obj == null)
-            {
-                return "Không thành công";
-            }
-            var KH = new KhachHang()
+            KhachHang kh = new KhachHang()
             {
                 ID = obj.ID,
+                HovaTen = obj.HovaTen,
                 Poin = obj.Poin,
-                Ten = obj.Ten,
-                Ho = obj.Ho,
-                TenDem = obj.TenDem,
-                NgaySinh = obj.NgaySinh,
                 SDT = obj.SDT,
-                GioiTinh = obj.GioiTinh,
-                DiaChi = obj.DiaChi,
-                ThanhPho = obj.ThanhPho,
-                QuocGia = obj.QuocGia,
-                
+                TrangThai = obj.TrangThai,
             };
-            if (_khachHangRepository.Delete(KH)) return "Xóa thành công";
-            return "Không thành công";
+            _IkhachHangRepository.Add(kh);
+            return true;
         }
 
-        public List<ViewKhachHang> GetAll()
+        public bool Delete(Guid ID)
         {
-            List<ViewKhachHang> lstKH = new List<ViewKhachHang>();
-            lstKH = (from n in _khachHangRepository.GetKhachHangfromDB()
-                     select new ViewKhachHang
-                     {
-                         ID = n.ID,
-                         Ten = n.Ten,
-                         Ho = n.Ho,
-                         TenDem = n.TenDem,
-                         NgaySinh = n.NgaySinh,
-                         SDT = n.SDT,
-                         Poin = n.Poin,
-                         GioiTinh = n.GioiTinh,
-                         DiaChi = n.DiaChi,
-                         ThanhPho = n.ThanhPho,
-                         QuocGia = n.QuocGia,
-                        
-                     }).ToList();
-            return lstKH;
+            var delete = _IkhachHangRepository.GetAll().FirstOrDefault(c=>c.ID == ID);
+            _IkhachHangRepository.Delete(delete);
+            return true;
         }
 
-        public List<ViewKhachHang> GetAll(string input)
+        public List<KhachHang> GetAll()
         {
-
-            List<ViewKhachHang> lstKH = new List<ViewKhachHang>();
-            lstKH = (from n in _khachHangRepository.GetKhachHangfromDB()
-                     where n.Ten.Contains(input)  || n.SDT.StartsWith(input)
-                     select new ViewKhachHang
-                     {
-                         ID = n.ID,
-
-                         Ten = n.Ten,
-                         Ho = n.Ho,
-                         TenDem = n.TenDem,
-                         NgaySinh = n.NgaySinh,
-                         SDT = n.SDT,
-                         Poin = n.Poin,
-                         GioiTinh = n.GioiTinh,
-                         DiaChi = n.DiaChi,
-                         ThanhPho = n.ThanhPho,
-                         QuocGia = n.QuocGia,
-                       
-                     }).ToList();
-            return lstKH;
+            _lstKhachHang = _IkhachHangRepository.GetAll();
+            return _lstKhachHang;
         }
 
-        public string Update(ViewKhachHang obj)
+        public List<ViewKhachHang> GetAllViewKhachHang()
         {
-            if (obj == null)
-            {
-                return "Không thành công";
-            }
-            var KH = new KhachHang()
-            {
-                ID = obj.ID,
-                Poin = obj.Poin,
-                Ten = obj.Ten,
-                Ho = obj.Ho,
-                TenDem = obj.TenDem,
-                NgaySinh = obj.NgaySinh,
-                SDT = obj.SDT,
-                GioiTinh = obj.GioiTinh,
-                DiaChi = obj.DiaChi,
-                ThanhPho = obj.ThanhPho,
-                QuocGia = obj.QuocGia,
-                
-            };
-            if (_khachHangRepository.Update(KH)) return "Sửa thành công";
-            return "Không thành công";
+            _lstViewKhachHang = (from a in _IkhachHangRepository.GetAll()
+                                 select new ViewKhachHang()
+                                 {
+                                     ID = a.ID,
+                                     HovaTen = a.HovaTen,
+                                     Poin = a.Poin,
+                                     SDT = a.SDT,
+                                     TrangThai = a.TrangThai,
+                                 }).ToList();
+            return _lstViewKhachHang;
+        }
+
+        public bool Update(ViewKhachHang obj)
+        {
+            var update = _IkhachHangRepository.GetAll().FirstOrDefault(_ => _.ID == obj.ID);
+            update.HovaTen = obj.HovaTen;
+            update.Poin = obj.Poin;
+            update.SDT = obj.SDT;
+            update.TrangThai = obj.TrangThai;
+            _IkhachHangRepository.Update(update);
+            return true;
         }
     }
 }

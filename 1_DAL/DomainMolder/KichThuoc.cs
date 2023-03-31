@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1_DAL.DomainMolder
 {
-    public class Size
+    public class KichThuoc
     {
         public Guid ID { get; set; }
         public string Ma { get; set; }

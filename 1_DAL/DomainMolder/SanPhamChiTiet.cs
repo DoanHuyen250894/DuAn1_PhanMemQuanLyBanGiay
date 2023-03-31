@@ -30,7 +30,7 @@ namespace _1_DAL.DomainMolder
         public MauSac mausac { get; set; }
         public LoaiSanPham loaiSanPham { get;set; }
         public SanPham sanpham { get; set; }
-        public Size size { get; set; }
+        public KichThuoc size { get; set; }
         public List<HoaDonChiTiet> hoadonchitiet { get; set; }
 
 

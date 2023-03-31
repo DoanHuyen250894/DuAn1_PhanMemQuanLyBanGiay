@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1_DAL.Repository
 {
-    internal class MauSacRepository : IMauSacRepository
+    public class MauSacRepository : IMauSacRepository
     {
         private QuanLyBanHangGiayContext _dbContext;
         private List<MauSac> _lstMauSac;

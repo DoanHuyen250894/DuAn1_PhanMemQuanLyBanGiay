@@ -22,7 +22,7 @@ namespace _1_DAL.Configurations
             builder.Property(x => x.GioiTinh);
             builder.Property(x => x.Email);
             builder.Property(x => x.AnhNv);
-            builder.Property(x => x.NamSinh);
+            builder.Property(x => x.NgaySinh);
             builder.Property(x => x.CCCD).IsRequired();
             builder.Property(x => x.SoDienThoai).IsRequired();
             builder.Property(x => x.DiaChi).IsRequired().HasMaxLength(200);

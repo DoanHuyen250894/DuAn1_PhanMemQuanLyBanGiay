@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1_DAL.Repository
 {
-    internal class KhuyenMaiRepository : IKhuyenMaiRepository
+    public class KhuyenMaiRepository : IKhuyenMaiRepository
     {
         private QuanLyBanHangGiayContext _dbContext;
         private List<KhuyenMai> _lstKhuyenMai;
@@ -45,5 +45,8 @@ namespace _1_DAL.Repository
             _dbContext.SaveChanges();
             return true;
         }
+        
     }
-}
+
+     }
+

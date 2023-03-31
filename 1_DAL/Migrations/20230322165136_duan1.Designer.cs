@@ -10,8 +10,8 @@ using _1_DAL.Dbcontext;
 namespace _1_DAL.Migrations
 {
     [DbContext(typeof(QuanLyBanHangGiayContext))]
-    [Migration("20230312025957_vb")]
-    partial class vb
+    [Migration("20230322165136_duan1")]
+    partial class duan1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,9 @@ namespace _1_DAL.Migrations
                     b.Property<string>("GhiChu")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Ma")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
                         .HasMaxLength(200)
@@ -50,6 +53,9 @@ namespace _1_DAL.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ma")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
@@ -222,6 +228,30 @@ namespace _1_DAL.Migrations
                     b.ToTable("KhuyenMai");
                 });
 
+            modelBuilder.Entity("_1_DAL.DomainMolder.KichThuoc", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ma")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ten")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("TrangThai")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Size");
+                });
+
             modelBuilder.Entity("_1_DAL.DomainMolder.LoaiSanPham", b =>
                 {
                     b.Property<Guid>("ID")
@@ -229,6 +259,9 @@ namespace _1_DAL.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ma")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
@@ -252,6 +285,9 @@ namespace _1_DAL.Migrations
                     b.Property<string>("GhiChu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Ma")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Ten")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -271,6 +307,9 @@ namespace _1_DAL.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ma")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
@@ -294,6 +333,9 @@ namespace _1_DAL.Migrations
                     b.Property<string>("GhiChu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Ma")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Ten")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -315,8 +357,9 @@ namespace _1_DAL.Migrations
                     b.Property<string>("AnhNv")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CCCD")
-                        .HasColumnType("int");
+                    b.Property<string>("CCCD")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DiaChi")
                         .IsRequired()
@@ -346,11 +389,12 @@ namespace _1_DAL.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<DateTime>("NamSinh")
+                    b.Property<DateTime>("NgaySinh")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SoDienThoai")
-                        .HasColumnType("int");
+                    b.Property<string>("SoDienThoai")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TrangThai")
                         .HasColumnType("int");
@@ -374,6 +418,9 @@ namespace _1_DAL.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ma")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ten")
@@ -455,27 +502,6 @@ namespace _1_DAL.Migrations
                     b.HasIndex("IDSZ");
 
                     b.ToTable("SanPhamChiTiet");
-                });
-
-            modelBuilder.Entity("_1_DAL.DomainMolder.Size", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("GhiChu")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ten")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("TrangThai")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Size");
                 });
 
             modelBuilder.Entity("_1_DAL.DomainMolder.HoaDon", b =>
@@ -573,7 +599,7 @@ namespace _1_DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("_1_DAL.DomainMolder.Size", "size")
+                    b.HasOne("_1_DAL.DomainMolder.KichThuoc", "size")
                         .WithMany("spct")
                         .HasForeignKey("IDSZ")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -619,6 +645,11 @@ namespace _1_DAL.Migrations
                     b.Navigation("spct");
                 });
 
+            modelBuilder.Entity("_1_DAL.DomainMolder.KichThuoc", b =>
+                {
+                    b.Navigation("spct");
+                });
+
             modelBuilder.Entity("_1_DAL.DomainMolder.LoaiSanPham", b =>
                 {
                     b.Navigation("spct");
@@ -652,11 +683,6 @@ namespace _1_DAL.Migrations
             modelBuilder.Entity("_1_DAL.DomainMolder.SanPhamChiTiet", b =>
                 {
                     b.Navigation("hoadonchitiet");
-                });
-
-            modelBuilder.Entity("_1_DAL.DomainMolder.Size", b =>
-                {
-                    b.Navigation("spct");
                 });
 #pragma warning restore 612, 618
         }

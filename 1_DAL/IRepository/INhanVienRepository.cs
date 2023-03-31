@@ -9,10 +9,10 @@ namespace _1_DAL.IRepository
 {
     public interface INhanVienRepository
     {
-        public bool Add(NhanVien obj);
-        public bool Update(NhanVien obj);
-        public bool Delete(NhanVien obj);
-        public NhanVien GetNhanVien(string username , string matkhau);
-        public List<NhanVien> GetAll();
+        bool addNhanVien(NhanVien nhanVien);
+        bool updateNhanVien(NhanVien nhanVien);
+        bool deleteNhanVien(NhanVien nhanVien);
+        NhanVien GetCheck(string gmail);
+        List<NhanVien> GetNhanVien();
     }
 }

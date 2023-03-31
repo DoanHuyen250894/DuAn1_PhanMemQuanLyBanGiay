@@ -7,47 +7,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static QRCoder.PayloadGenerator;
 
 namespace _1_DAL.Repository
 {
     public class NhanVienRepository : INhanVienRepository
     {
         private QuanLyBanHangGiayContext _dbContext;
-        public List<NhanVien> _lstNhanVien;
+        private List<NhanVien> _lstnv;
         public NhanVienRepository()
         {
             _dbContext = new QuanLyBanHangGiayContext();
-            _lstNhanVien = new List<NhanVien>();
+            _lstnv = new List<NhanVien>();
         }
-        public bool Add(NhanVien obj)
+
+        public bool addNhanVien(NhanVien nhanVien)
         {
-            _dbContext.NhanViens.Add(obj);
+            _dbContext.NhanViens.Add(nhanVien);
             _dbContext.SaveChanges();
             return true;
         }
 
-        public bool Delete(NhanVien obj)
+        public bool deleteNhanVien(NhanVien nhanVien)
         {
-            _dbContext.NhanViens.Remove(obj);
+            _dbContext.NhanViens.Remove(nhanVien);
             _dbContext.SaveChanges();
             return true;
         }
 
-        public List<NhanVien> GetAll()
+        public NhanVien GetCheck(string gmail)
         {
-            _lstNhanVien = _dbContext.NhanViens.ToList();
-            return _lstNhanVien;
-        }
-
-        public NhanVien GetNhanVien(string username, string matkhau)
-        {
-            NhanVien nv = _dbContext.NhanViens.FirstOrDefault(p => p.Username == username && p.MatKhau == matkhau);
+            NhanVien nv = _dbContext.NhanViens.FirstOrDefault(p => p.Email == gmail);
             return nv;
         }
 
-        public bool Update(NhanVien obj)
+        public List<NhanVien> GetNhanVien()
         {
-            _dbContext.NhanViens.Update(obj);
+            _lstnv = _dbContext.NhanViens.ToList();
+            return _lstnv;
+        }
+
+        public bool updateNhanVien(NhanVien nhanVien)
+        {
+            _dbContext.NhanViens.Update(nhanVien);
             _dbContext.SaveChanges();
             return true;
         }

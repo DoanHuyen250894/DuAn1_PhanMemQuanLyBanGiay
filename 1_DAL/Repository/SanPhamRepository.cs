@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1_DAL.Repository
 {
-    internal class SanPhamRepository : ISanPhamRepository
+    public class SanPhamRepository : ISanPhamRepository
     {
         private QuanLyBanHangGiayContext _dbContext;
         private List<SanPham> _lstSanPham;
