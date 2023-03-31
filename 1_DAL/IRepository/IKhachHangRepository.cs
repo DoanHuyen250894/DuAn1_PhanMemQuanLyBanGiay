@@ -12,6 +12,6 @@ namespace _1_DAL.IRepository
         public bool Add(KhachHang obj);
         public bool Update(KhachHang obj);
         public bool Delete(KhachHang obj);
-        public List<KhachHang> GetKhachHangfromDB(); 
+        public List<KhachHang> GetAll(); 
     }
 }

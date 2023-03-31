@@ -12,6 +12,6 @@ namespace _1_DAL.IRepository
         public bool Add(SanPhamChiTiet obj);
         public bool Update(SanPhamChiTiet obj);
         public bool Delete(SanPhamChiTiet obj);
-        public List<SanPhamChiTiet> GetAll();
+        public List<SanPhamChiTiet> GetChiTietSP();
     }
 }

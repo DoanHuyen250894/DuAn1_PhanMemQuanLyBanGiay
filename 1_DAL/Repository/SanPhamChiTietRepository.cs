@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1_DAL.Repository
 {
-    internal class SanPhamChiTietRepository : ISanPhamChiTietRepository
+    public class SanPhamChiTietRepository : ISanPhamChiTietRepository
     {
         private QuanLyBanHangGiayContext _dbContext;
         private List<SanPhamChiTiet> _lstSanPhamCT;
@@ -33,13 +33,14 @@ namespace _1_DAL.Repository
             return true;
         }
 
-        public List<SanPhamChiTiet> GetAll()
-        {
-            _lstSanPhamCT = _dbContext.SanPhamChiTiets.ToList();
-            return _lstSanPhamCT;
-        }
 
-        public bool Update(SanPhamChiTiet obj)
+		public List<SanPhamChiTiet> GetChiTietSP()
+		{
+			_lstSanPhamCT = _dbContext.SanPhamChiTiets.ToList();
+			return _lstSanPhamCT;
+		}
+
+		public bool Update(SanPhamChiTiet obj)
         {
             _dbContext.SanPhamChiTiets.Update(obj);
             _dbContext.SaveChanges();

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace _1_DAL.Configurations
 {
-    public class SizeConfigurations : IEntityTypeConfiguration<Size>
+    public class SizeConfigurations : IEntityTypeConfiguration<KichThuoc>
     {
-        public void Configure(EntityTypeBuilder<Size> builder)
+        public void Configure(EntityTypeBuilder<KichThuoc> builder)
         {
             builder.ToTable("Size");
             builder.HasKey(x => x.ID);

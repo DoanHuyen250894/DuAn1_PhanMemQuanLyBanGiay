@@ -17,9 +17,9 @@ namespace _1_DAL.DomainMolder
         public int GioiTinh { get; set; }
         public string Email { get; set; }
         public string AnhNv { get;set; }
-        public DateTime NamSinh { get; set; }
-        public int SoDienThoai { get; set; }
-        public int CCCD { get; set; }
+        public DateTime NgaySinh { get; set; }
+        public string SoDienThoai { get; set; }
+        public string CCCD { get; set; }
         public string MatKhau { get; set; }
         public string DiaChi { get; set; }
         public int TrangThai { get; set; }

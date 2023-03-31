@@ -12,19 +12,14 @@ namespace _1_DAL.Repository
     public class KhachHangRepository : IKhachHangRepository
     {
         private QuanLyBanHangGiayContext _dbContext;
-        private List<KhachHang> _lstKhachHang;
+        private List<KhachHang> _lstkh;
         public KhachHangRepository()
         {
             _dbContext = new QuanLyBanHangGiayContext();
-            _lstKhachHang = new List<KhachHang>();
-            GetKhachHangfromDB();
+            _lstkh = new List<KhachHang>();
         }
-
         public bool Add(KhachHang obj)
         {
-            if (obj == null)
-                return false;
-            obj.ID = Guid.NewGuid();
             _dbContext.KhachHangs.Add(obj);
             _dbContext.SaveChanges();
             return true;
@@ -32,38 +27,21 @@ namespace _1_DAL.Repository
 
         public bool Delete(KhachHang obj)
         {
-            if (obj == null)
-                return false;
-            var temp = _dbContext.KhachHangs.FirstOrDefault(x => x.ID == obj.ID);
-            _dbContext.KhachHangs.Remove(temp);
+            _dbContext.KhachHangs.Remove(obj);
             _dbContext.SaveChanges();
             return true;
         }
 
-        public List<KhachHang> GetKhachHangfromDB()
+        public List<KhachHang> GetAll()
         {
-            _lstKhachHang = _dbContext.KhachHangs.ToList();
-            return _lstKhachHang;
+            _lstkh = _dbContext.KhachHangs.ToList();
+            return _lstkh;
         }
 
         public bool Update(KhachHang obj)
         {
-            if (obj == null) return false;
-            var temp = _dbContext.KhachHangs.FirstOrDefault(x => x.ID == obj.ID);
-            temp.Ho = obj.Ho;
-            temp.TenDem= obj.TenDem;
-            temp.Ten = obj.Ten;
-            temp.Poin = obj.Poin;
-            temp.GioiTinh = obj.GioiTinh;
-            temp.NgaySinh = obj.NgaySinh;
-            temp.SDT = obj.SDT;
-            temp.DiaChi= obj.DiaChi;
-            temp.ThanhPho = obj.ThanhPho;
-            temp.QuocGia = obj.QuocGia;
-           
-            _dbContext.KhachHangs.Update(temp);
-           _dbContext.SaveChanges();
-
+            _dbContext.KhachHangs.Update(obj);
+            _dbContext.SaveChanges();
             return true;
         }
     }

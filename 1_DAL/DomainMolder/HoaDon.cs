@@ -12,12 +12,11 @@ namespace _1_DAL.DomainMolder
         public Guid IDKH { get; set; }
         public Guid IDNV { get; set; }
         public Guid IDHTTT { get; set; }
-       
         public string Ma { get; set; }
         public DateTime NgayTao { get; set; }
         public DateTime NgayThanhToan {  get; set; }
-         
-        public int TrangThai { get; set; }
+		public decimal ThanhTien { get; set; } 
+		public int TrangThai { get; set; }
         public NhanVien nhanvien { get; set; }
         public KhachHang khachhang { get; set; }
         public HinhThucThanhToan hinhthucthanhtoan { get; set; }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _1_DAL.Repository
 {
-    internal class NSXRepository : INSXRepository
+    public class NSXRepository : INSXRepository
     {
         private QuanLyBanHangGiayContext _dbContext;
         public List<NSX> _lstNSX;

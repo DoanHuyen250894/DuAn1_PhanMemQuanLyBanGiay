@@ -36,7 +36,7 @@ namespace _1_DAL.Dbcontext
         }
         protected override void OnConfiguring(DbContextOptionsBuilder dbContextOptionsBuilder)
         {
-            dbContextOptionsBuilder.UseSqlServer(@"Data Source=DESKTOP-A9URI7S\SQLEXPRESS;Initial Catalog=DuAn1;Persist Security Info=True; User ID =sa; Password =123456");
+            dbContextOptionsBuilder.UseSqlServer(@"Data Source=LAPTOP-8REJ154K;Initial Catalog=DuAn1;Persist Security Info=True; User ID =sa; Password =2003");
         }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
@@ -49,7 +49,7 @@ namespace _1_DAL.Dbcontext
         public virtual DbSet<SanPhamChiTiet> SanPhamChiTiets { get; set; }
         public virtual DbSet<KhuyenMai> KhuyenMais { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<Size> Sizes { get; set; }
+        public virtual DbSet<KichThuoc> Sizes { get; set; }
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
         public virtual DbSet<NSX> NSXs { get; set; }
 

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using _2_BUS.IServices;
+using _2_BUS.Services;
+using _2_BUS.ViewMolder;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,277 +11,100 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
- using _2_BUS.IServices;
-using _2_BUS.Services;
-using _2_BUS.ViewMolder;
-using _3_GUI.Utilities;
-
 
 namespace _3_GUI.View
 {
     public partial class FrmKhachHang : Form
     {
-        private IKhachHangServices _khachHangServices;
-        private Guid _Id;
-        private ViewKhachHang vw;
-      
+        IKhachHangServices _IKhachHangServices;
+        public Guid ID;
+        List<ViewKhachHang> _lstViewKhachHang;
         public FrmKhachHang()
         {
             InitializeComponent();
-            _khachHangServices = new KhachHangServices();
-            rbtn_Nam.Checked = true;
-           
+            _IKhachHangServices = new KhachHangServices();
+            _lstViewKhachHang = new List<ViewKhachHang>();
             LoadData();
-
         }
+
         public void LoadData()
         {
-            int stt = 1;
-            dgrid_KhachHang.ColumnCount = 7;
-            dgrid_KhachHang.Columns[1].Name = "Id";
-            dgrid_KhachHang.Columns[2].Name = "Họ và tên";
-            dgrid_KhachHang.Columns[3].Name = "Giới tính";
-            dgrid_KhachHang.Columns[4].Name = "Ngày sinh";
-            dgrid_KhachHang.Columns[5].Name = "SĐT";
-            dgrid_KhachHang.Columns[6].Name = "Địa chỉ";
-           
-          
-            dgrid_KhachHang.Rows.Clear();
-            foreach (var x in _khachHangServices.GetAll())
+            dtg_show.Rows.Clear();
+            dtg_show.ColumnCount = 5;
+            dtg_show.Columns[0].Name = "ID";
+            dtg_show.Columns[0].Visible = false;
+            dtg_show.Columns[1].Name = "Ho va Ten";
+            dtg_show.Columns[2].Name = "So dien thoai";
+            dtg_show.Columns[3].Name = "Point";
+            dtg_show.Columns[4].Name = "Trang thai";
+            _lstViewKhachHang = _IKhachHangServices.GetAllViewKhachHang();
+            if (tb_timkiem.Text != "")
             {
-                dgrid_KhachHang.Rows.Add(stt++, x.ID, x.Ho + " " + x.TenDem + " " + x.Ten, x.GioiTinh, x.NgaySinh, x.SDT, x.DiaChi + "," + x.ThanhPho + "," + x.QuocGia);
+                _lstViewKhachHang.Where(c => c.HovaTen.Contains(tb_hoten.Text) || c.SDT.StartsWith(tb_sdt.Text)).ToList();
+            }
+            foreach(var a in _lstViewKhachHang)
+            {
+                dtg_show.Rows.Add(a.ID, a.HovaTen, a.SDT, a.Poin, a.TrangThai == 0?"Khách vãng lai":"Khách quen");
             }
         }
-        public void LoadData(string input)
-        {
-            int stt = 1;
-            dgrid_KhachHang.ColumnCount = 7;
-            dgrid_KhachHang.Columns[1].Name = "Id";
-            dgrid_KhachHang.Columns[2].Name = "Họ và tên";
-            dgrid_KhachHang.Columns[3].Name = "Giới tính";
-            dgrid_KhachHang.Columns[4].Name = "Ngày sinh";
-            dgrid_KhachHang.Columns[5].Name = "SĐT";
-            dgrid_KhachHang.Columns[6].Name = "Địa chỉ";
 
-           
-            dgrid_KhachHang.Rows.Clear();
-            foreach (var x in _khachHangServices.GetAll(input))
+        private void btn_them_Click(object sender, EventArgs e)
+        {
+            ViewKhachHang kh = new ViewKhachHang()
             {
-                dgrid_KhachHang.Rows.Add(stt++, x.ID, x.Ho + " " + x.TenDem + " " + x.Ten, x.GioiTinh, x.NgaySinh, x.SDT, x.DiaChi + "," + x.ThanhPho + "," + x.QuocGia);
-            }
-        }
-        public void Reset()
-        {
-            LoadData();
-            vw = null;
-            txt_ho.Text = "";
-            txt_Ten.Text = "";
-            txt_TenDem.Text = "";
-            txt_SDT.Text = "";
-            txt_DiaChi.Text = "";
-            txt_QuocGia.Text = "Việt Nam";
-            txt_TimKiem.Text = "Tìm Kiếm...";
-            txt_ThanhPho.Text = "";
-           
-            rbtn_Nam.Checked = true;
-            rbtn_Nu.Checked = false;
-
-
-        }
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        public ViewKhachHang GetData()
-        {
-            ViewKhachHang kh = new ViewKhachHang() { 
-                ID = Guid.Empty,
-                Ho = txt_ho.Text,
-                TenDem = txt_TenDem.Text,
-                Ten = txt_Ten.Text,
-                GioiTinh = rbtn_Nam.Checked == true ? "Nam" : "Nữ",
-                NgaySinh = date.Value,
-                SDT = txt_SDT.Text,
-                DiaChi= txt_DiaChi.Text,
-                ThanhPho = txt_ThanhPho.Text,
-                QuocGia = txt_QuocGia.Text,
-               
-                Poin = 1000,
+                HovaTen = tb_hoten.Text,
+                Poin = Convert.ToInt32(tb_point.Text),
+                SDT = tb_sdt.Text,
+                TrangThai = rd_khachvanglai.Checked == false ? 1 : 0,
             };
-            return kh;
+            _IKhachHangServices.Add(kh);
+            LoadData();
+            MessageBox.Show("Them khach hang thanh cong");
         }
 
-        public bool checknhap()
+        private void tb_sua_Click(object sender, EventArgs e)
         {
-            if (txt_Ten.Text == "" || txt_DiaChi.Text == "" || txt_ho.Text == "" || txt_TenDem.Text == "" || txt_SDT.Text == "" || txt_ThanhPho.Text == "") return false;
-            return true;
-        }
-
-        private void btn_Them_Click(object sender, EventArgs e)
-        {
-          
-            if (checknhap() == false)
+            DialogResult dg = MessageBox.Show("Ban co muon sua khach hang khong????");
+            if (dg == DialogResult.OK)
             {
-                MessageBox.Show("Không được để trống các trường", "Chú ý");
-            }
-            
-            else
-            {
-                DialogResult di = MessageBox.Show("Bạn có chắc chắn muốn thêm không?", "Thông báo", MessageBoxButtons.YesNo);
-                if (di == DialogResult.Yes)
+                ViewKhachHang kh = new ViewKhachHang()
                 {
-                    MessageBox.Show(_khachHangServices.Add(GetData()));
-                    LoadData();
-                }
-                if (di == DialogResult.No)
-                {
-                    return;
-                }
+                    ID = ID,
+                    HovaTen = tb_hoten.Text,
+                    Poin = Convert.ToInt32(tb_point.Text),
+                    SDT = tb_sdt.Text,
+                    TrangThai = rd_khachvanglai.Checked == false ? 1 : 0,
+                };
+                _IKhachHangServices.Update(kh);
+                LoadData();
+                MessageBox.Show("Sua khach hang thanh cong");
             }
         }
 
-        private void btn_Sua_Click(object sender, EventArgs e)
+        private void rjButton3_Click(object sender, EventArgs e)
         {
-            if (checknhap() == false)
+            DialogResult dialog = MessageBox.Show("Bạn có muốn xóa khach hang không?", "Chú ý", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
             {
-                MessageBox.Show("Không được để trống các trường", "Chú ý");
-            }
-            else
-            {
-                DialogResult di = MessageBox.Show("Bạn có chắc chắn muốn sửa ko?", "Thông báo", MessageBoxButtons.YesNo);
-                if (di == DialogResult.Yes)
-                {
-                    var temp = GetData();
-                    temp.ID = _Id;
-                    MessageBox.Show(_khachHangServices.Update(temp));
-                    LoadData();
-                }
-                if (di == DialogResult.No)
-                {
-                    return;
-                }
-            }
-        }
-
-        private void btn_Xoa_Click(object sender, EventArgs e)
-        {
-            DialogResult di = MessageBox.Show("Bạn có chắc chắn muốn xóa ko?", "Thông báo", MessageBoxButtons.YesNo);
-            if (di == DialogResult.Yes)
-            {
-                var temp = GetData();
-                temp.ID = _Id;
-                MessageBox.Show(_khachHangServices.Delete(temp));
+                _IKhachHangServices.Delete(ID);
+                MessageBox.Show("Xoa khach hang thanh cong");
                 LoadData();
             }
-            if (di == DialogResult.No)
+        }
+
+        private void dtg_show_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
             {
-                return;
+                DataGridViewRow r = dtg_show.Rows[e.RowIndex];
+                ID = Guid.Parse(dtg_show.Rows[e.RowIndex].Cells[0].Value.ToString());
+                var kh = _IKhachHangServices.GetAllViewKhachHang().FirstOrDefault(x=>x.ID == ID);
+                tb_hoten.Text = kh.HovaTen;
+                tb_point.Text = Convert.ToString(kh.Poin);
+                tb_sdt.Text = Convert.ToString(kh.SDT);
+                rd_khachvanglai.Checked = (kh.TrangThai == 1)? true: false;
+                rd_khachquen.Checked = (kh.TrangThai != 1) ? true : false;
             }
-        }
-
-        private void btn_Clear_Click(object sender, EventArgs e)
-        {
-           
-                Reset();
-            
-         
-        }
-
-        private void btn_TimKiem_Click(object sender, EventArgs e)
-        {
-            int stt = 1;
-            dgrid_KhachHang.ColumnCount = 7;
-            dgrid_KhachHang.Columns[1].Name = "Id";
-            dgrid_KhachHang.Columns[2].Name = "Họ và tên";
-            dgrid_KhachHang.Columns[3].Name = "Giới tính";
-            dgrid_KhachHang.Columns[4].Name = "Ngày sinh";
-            dgrid_KhachHang.Columns[5].Name = "SĐT";
-            dgrid_KhachHang.Columns[6].Name = "Địa chỉ";
-
-            
-            dgrid_KhachHang.Rows.Clear();
-            foreach (var x in _khachHangServices.GetAll(txt_TimKiem.Text))
-            {
-                dgrid_KhachHang.Rows.Add(stt++, x.ID, x.Ho + " " + x.TenDem + " " + x.Ten, x.GioiTinh, x.NgaySinh, x.SDT, x.DiaChi + "," + x.ThanhPho + "," + x.QuocGia );
-            }
-        }
-
-        private void dgrid_KhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _Id = Guid.Parse(dgrid_KhachHang.CurrentRow.Cells[1].Value.ToString());
-            var KH = _khachHangServices.GetAll().FirstOrDefault(c => c.ID == _Id);
-     
-            txt_ho.Text = KH.Ho;
-            txt_TenDem.Text = KH.TenDem;
-            txt_Ten.Text = KH.Ten;
-            txt_SDT.Text = KH.SDT;
-            txt_ThanhPho.Text = KH.ThanhPho;
-           txt_QuocGia.Text = KH.QuocGia;
-           txt_DiaChi.Text = KH.DiaChi;
-           
-            date.Value = KH.NgaySinh;
-            if (KH.GioiTinh == "Nam")
-            {
-                rbtn_Nam.Checked = true;
-            }
-            rbtn_Nu.Checked = true;
-            
-        }
-
-        private void txt_ho_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_ho_Leave(object sender, EventArgs e)
-        {
-            txt_ho.Text = Utilities.Utilities.VietHoaChuCaiDau(txt_ho.Text);
-          Utilities.Utilities.CheckSo(txt_ho.Text);
-        }
-
-        private void txt_TenDem_Leave(object sender, EventArgs e)
-        {
-            txt_TenDem.Text = Utilities.Utilities.VietHoaChuCaiDau(txt_TenDem.Text);
-           Utilities.Utilities.CheckSo(txt_TenDem.Text);
-        }
-
-        private void txt_Ten_Leave(object sender, EventArgs e)
-        {
-            txt_Ten.Text = Utilities.Utilities.VietHoaChuCaiDau(txt_Ten.Text);
-          Utilities.Utilities.CheckSo(txt_Ten.Text);
-        }
-
-        private void txt_ThanhPho_TextChanged(object sender, EventArgs e)
-        {
-  
-        }
-
-        private void txt_SDT_TextChanged(object sender, EventArgs e)
-        {
-         //  Utilities.Utilities.CheckSDT(txt_SDT.Text);
-        }
-
-        private void txt_TimKiem_TextChanged(object sender, EventArgs e)
-        {
-        
-        }
-
-        private void txt_DiaChi_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_DiaChi_Leave(object sender, EventArgs e)
-        {
-
-            
-        }
-
-        private void txt_ThanhPho_Leave(object sender, EventArgs e)
-        {
-            txt_ThanhPho.Text = Utilities.Utilities.VietHoaChuCaiDau(txt_ThanhPho.Text);
-            Utilities.Utilities.CheckSo(txt_ThanhPho.Text);
         }
     }
 }

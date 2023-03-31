@@ -21,6 +21,9 @@ namespace _1_DAL.Repository
 
         public bool Add(HoaDonChiTiet obj)
         {
+            //if (obj == null) return false;
+            //obj.ID = Guid.NewGuid();
+            
             _dbContext.HoaDonChiTiet.Add(obj);
             _dbContext.SaveChanges();
             return true;
@@ -28,9 +31,12 @@ namespace _1_DAL.Repository
 
         public bool Delete(HoaDonChiTiet obj)
         {
-            _dbContext.HoaDonChiTiet.Remove(obj);
+            if (obj == null) return false;
+            var temp = _dbContext.HoaDonChiTiet.FirstOrDefault(c => c.ID == obj.ID);
+            _dbContext.HoaDonChiTiet.Remove(temp);
             _dbContext.SaveChanges();
             return true;
+
         }
 
         public List<HoaDonChiTiet> GetAll()
@@ -41,7 +47,15 @@ namespace _1_DAL.Repository
 
         public bool Update(HoaDonChiTiet obj)
         {
-            _dbContext.HoaDonChiTiet.Update(obj);
+            if (obj == null) return false;
+            
+                var temp = _dbContext.HoaDonChiTiet.FirstOrDefault(c => c.ID == obj.ID);
+            temp.IDHD = obj.IDHD;
+            temp.IDSPCT = obj.IDSPCT;
+            temp.SoLuong = obj.SoLuong;
+            temp.DonGia = obj.DonGia;
+            
+            _dbContext.HoaDonChiTiet.Update(temp);
             _dbContext.SaveChanges();
             return true;
         }
