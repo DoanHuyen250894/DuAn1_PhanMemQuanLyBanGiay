@@ -15,5 +15,7 @@ namespace _2_BUS.IServices
         public bool Delete(Guid ID);
         public List<KhachHang> GetAll();
         public List<ViewKhachHang> GetAllViewKhachHang();
+        public KhachHang GetByID(Guid ID);
+        public bool UpdateKhachHang(KhachHang obj);
     }
 }

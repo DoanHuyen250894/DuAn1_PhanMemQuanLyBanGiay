@@ -28,92 +28,163 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tb_ma = new System.Windows.Forms.TextBox();
-            tb_email = new System.Windows.Forms.TextBox();
-            lb_loichao = new System.Windows.Forms.Label();
-            tb_pass = new System.Windows.Forms.TextBox();
-            label1 = new System.Windows.Forms.Label();
-            btn_xacnhan = new RJControls.RJButton();
-            SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmQuenMatKhau));
+            this.txt_passnew = new System.Windows.Forms.TextBox();
+            this.txt_pass = new System.Windows.Forms.TextBox();
+            this.txt_gmail = new System.Windows.Forms.TextBox();
+            this.txt_user = new System.Windows.Forms.TextBox();
+            this.btn_XacNhan = new _3_GUI.RJControls.RJButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
             // 
-            // tb_ma
+            // txt_passnew
             // 
-            tb_ma.Location = new System.Drawing.Point(207, 42);
-            tb_ma.Name = "tb_ma";
-            tb_ma.Size = new System.Drawing.Size(350, 23);
-            tb_ma.TabIndex = 0;
+            this.txt_passnew.Location = new System.Drawing.Point(397, 177);
+            this.txt_passnew.Name = "txt_passnew";
+            this.txt_passnew.Size = new System.Drawing.Size(226, 27);
+            this.txt_passnew.TabIndex = 21;
             // 
-            // tb_email
+            // txt_pass
             // 
-            tb_email.Location = new System.Drawing.Point(207, 83);
-            tb_email.Name = "tb_email";
-            tb_email.Size = new System.Drawing.Size(350, 23);
-            tb_email.TabIndex = 1;
+            this.txt_pass.Location = new System.Drawing.Point(372, 126);
+            this.txt_pass.Name = "txt_pass";
+            this.txt_pass.Size = new System.Drawing.Size(251, 27);
+            this.txt_pass.TabIndex = 20;
             // 
-            // lb_loichao
+            // txt_gmail
             // 
-            lb_loichao.AutoSize = true;
-            lb_loichao.Location = new System.Drawing.Point(207, 9);
-            lb_loichao.Name = "lb_loichao";
-            lb_loichao.Size = new System.Drawing.Size(38, 15);
-            lb_loichao.TabIndex = 2;
-            lb_loichao.Text = "label1";
+            this.txt_gmail.Location = new System.Drawing.Point(354, 86);
+            this.txt_gmail.Name = "txt_gmail";
+            this.txt_gmail.Size = new System.Drawing.Size(269, 27);
+            this.txt_gmail.TabIndex = 19;
             // 
-            // tb_pass
+            // txt_user
             // 
-            tb_pass.Location = new System.Drawing.Point(207, 124);
-            tb_pass.Name = "tb_pass";
-            tb_pass.Size = new System.Drawing.Size(350, 23);
-            tb_pass.TabIndex = 3;
+            this.txt_user.Location = new System.Drawing.Point(386, 44);
+            this.txt_user.Name = "txt_user";
+            this.txt_user.Size = new System.Drawing.Size(237, 27);
+            this.txt_user.TabIndex = 18;
+            // 
+            // btn_XacNhan
+            // 
+            this.btn_XacNhan.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_XacNhan.FlatAppearance.BorderSize = 0;
+            this.btn_XacNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_XacNhan.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_XacNhan.ForeColor = System.Drawing.Color.White;
+            this.btn_XacNhan.Location = new System.Drawing.Point(364, 216);
+            this.btn_XacNhan.Name = "btn_XacNhan";
+            this.btn_XacNhan.Size = new System.Drawing.Size(184, 56);
+            this.btn_XacNhan.TabIndex = 17;
+            this.btn_XacNhan.Text = "Xác nhận";
+            this.btn_XacNhan.UseVisualStyleBackColor = false;
+            this.btn_XacNhan.Click += new System.EventHandler(this.btn_XacNhan_Click_1);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(280, 173);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(120, 25);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Passord new:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(280, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 25);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Gmail:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(280, 126);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(94, 25);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Password:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(280, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 25);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Username:";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(105, 132);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(81, 15);
-            label1.TabIndex = 4;
-            label1.Text = "Mat khau moi";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(363, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(184, 31);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "ĐỔI MẬT KHẨU";
             // 
-            // btn_xacnhan
+            // pictureBox1
             // 
-            btn_xacnhan.BackColor = System.Drawing.Color.MediumSeaGreen;
-            btn_xacnhan.FlatAppearance.BorderSize = 0;
-            btn_xacnhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            btn_xacnhan.ForeColor = System.Drawing.Color.White;
-            btn_xacnhan.Location = new System.Drawing.Point(437, 153);
-            btn_xacnhan.Name = "btn_xacnhan";
-            btn_xacnhan.Size = new System.Drawing.Size(120, 30);
-            btn_xacnhan.TabIndex = 5;
-            btn_xacnhan.Text = "Xac nhan";
-            btn_xacnhan.UseVisualStyleBackColor = false;
-            btn_xacnhan.Click += btn_xacnhan_Click;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(262, 270);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmQuenMatKhau
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(578, 193);
-            Controls.Add(btn_xacnhan);
-            Controls.Add(label1);
-            Controls.Add(tb_pass);
-            Controls.Add(lb_loichao);
-            Controls.Add(tb_email);
-            Controls.Add(tb_ma);
-            Name = "FrmQuenMatKhau";
-            Text = "FrmQuenMatKhau";
-            Load += FrmQuenMatKhau_Load;
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SeaShell;
+            this.ClientSize = new System.Drawing.Size(625, 294);
+            this.Controls.Add(this.txt_passnew);
+            this.Controls.Add(this.txt_pass);
+            this.Controls.Add(this.txt_gmail);
+            this.Controls.Add(this.txt_user);
+            this.Controls.Add(this.btn_XacNhan);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "FrmQuenMatKhau";
+            this.Text = "FrmQuenMatKhau";
+            this.Load += new System.EventHandler(this.FrmQuenMatKhau_Load_1);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox tb_ma;
-        private System.Windows.Forms.TextBox tb_email;
-        private System.Windows.Forms.Label lb_loichao;
-        private System.Windows.Forms.TextBox tb_pass;
+        private System.Windows.Forms.TextBox txt_passnew;
+        private System.Windows.Forms.TextBox txt_pass;
+        private System.Windows.Forms.TextBox txt_gmail;
+        private System.Windows.Forms.TextBox txt_user;
+        private RJControls.RJButton btn_XacNhan;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private RJControls.RJButton btn_xacnhan;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

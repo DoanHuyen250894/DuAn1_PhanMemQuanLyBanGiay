@@ -26,7 +26,6 @@ namespace _3_GUI.View
             _lstViewKhachHang = new List<ViewKhachHang>();
             LoadData();
         }
-
         public void LoadData()
         {
             dtg_show.Rows.Clear();
@@ -38,33 +37,45 @@ namespace _3_GUI.View
             dtg_show.Columns[3].Name = "Point";
             dtg_show.Columns[4].Name = "Trang thai";
             _lstViewKhachHang = _IKhachHangServices.GetAllViewKhachHang();
-            if (tb_timkiem.Text != "")
+            if (txt_TimKiem.Text != "")
             {
-                _lstViewKhachHang.Where(c => c.HovaTen.Contains(tb_hoten.Text) || c.SDT.StartsWith(tb_sdt.Text)).ToList();
+                _lstViewKhachHang = _lstViewKhachHang.Where(x => x.HovaTen.Contains(txt_TimKiem.Text) || x.SDT.StartsWith(txt_TimKiem.Text)).ToList();
             }
-            foreach(var a in _lstViewKhachHang)
+            foreach (var a in _lstViewKhachHang)
             {
-                dtg_show.Rows.Add(a.ID, a.HovaTen, a.SDT, a.Poin, a.TrangThai == 0?"Khách vãng lai":"Khách quen");
+                dtg_show.Rows.Add(a.ID, a.HovaTen, a.SDT, a.Poin, a.TrangThai == 1 ? "Khách quen": "Khách vãng lai") ;
             }
+        }
+        public bool checknhap()
+        {
+            if (tb_hoten.Text == ""  || tb_sdt.Text == "") return false;
+            return true;
         }
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            ViewKhachHang kh = new ViewKhachHang()
+            if (checknhap() == false)
             {
-                HovaTen = tb_hoten.Text,
-                Poin = Convert.ToInt32(tb_point.Text),
-                SDT = tb_sdt.Text,
-                TrangThai = rd_khachvanglai.Checked == false ? 1 : 0,
-            };
-            _IKhachHangServices.Add(kh);
-            LoadData();
-            MessageBox.Show("Them khach hang thanh cong");
+                MessageBox.Show("Không được để trống các trường", "Chú ý");
+            }
+            else
+            {
+                ViewKhachHang kh = new ViewKhachHang()
+                {
+                    HovaTen = tb_hoten.Text,
+                    Poin = Convert.ToInt32(tb_point.Text),
+                    SDT = tb_sdt.Text,
+                    TrangThai = rd_khachquen.Checked == true ? 1 : 0,
+                };
+                _IKhachHangServices.Add(kh);
+                LoadData();
+                MessageBox.Show("Thêm khách hàng thành công");
+            }
         }
 
         private void tb_sua_Click(object sender, EventArgs e)
         {
-            DialogResult dg = MessageBox.Show("Ban co muon sua khach hang khong????");
+            DialogResult dg = MessageBox.Show("Bạn có muốn sửa khách hàng?");
             if (dg == DialogResult.OK)
             {
                 ViewKhachHang kh = new ViewKhachHang()
@@ -73,38 +84,70 @@ namespace _3_GUI.View
                     HovaTen = tb_hoten.Text,
                     Poin = Convert.ToInt32(tb_point.Text),
                     SDT = tb_sdt.Text,
-                    TrangThai = rd_khachvanglai.Checked == false ? 1 : 0,
+                    TrangThai = rd_khachquen.Checked == true ? 1 : 0,
                 };
                 _IKhachHangServices.Update(kh);
                 LoadData();
-                MessageBox.Show("Sua khach hang thanh cong");
+                MessageBox.Show("Sửa khách hàng thành công");
             }
         }
 
         private void rjButton3_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Bạn có muốn xóa khach hang không?", "Chú ý", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Bạn có muốn xóa khách hàng không?", "Chú ý", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
                 _IKhachHangServices.Delete(ID);
-                MessageBox.Show("Xoa khach hang thanh cong");
+                MessageBox.Show("Xóa thành công");
                 LoadData();
             }
         }
 
+        private void rjButton4_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void dtg_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        public void Reset()
+        {
+            LoadData();
+            _lstViewKhachHang = null;
+            tb_hoten.Text = "";
+
+            tb_sdt.Text = "";
+
+            txt_TimKiem.Text = "";
+            tb_point.Text = "";
+
+            rd_khachquen.Checked = true;
+            rd_khachvanglai.Checked = false;
+
+
+        }
+
         private void dtg_show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow r = dtg_show.Rows[e.RowIndex];
                 ID = Guid.Parse(dtg_show.Rows[e.RowIndex].Cells[0].Value.ToString());
-                var kh = _IKhachHangServices.GetAllViewKhachHang().FirstOrDefault(x=>x.ID == ID);
+                var kh = _IKhachHangServices.GetAllViewKhachHang().FirstOrDefault(x => x.ID == ID);
                 tb_hoten.Text = kh.HovaTen;
                 tb_point.Text = Convert.ToString(kh.Poin);
                 tb_sdt.Text = Convert.ToString(kh.SDT);
-                rd_khachvanglai.Checked = (kh.TrangThai == 1)? true: false;
-                rd_khachquen.Checked = (kh.TrangThai != 1) ? true : false;
+                rd_khachvanglai.Checked = (kh.TrangThai == 0) ? true : false;
+                rd_khachquen.Checked = (kh.TrangThai != 0) ? true : false;
             }
+        }
+
+        private void txt_TimKiem_TextChanged(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

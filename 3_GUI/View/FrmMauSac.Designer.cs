@@ -243,7 +243,7 @@
             // 
             // dgrid_MauSac
             // 
-            this.dgrid_MauSac.BackgroundColor = System.Drawing.Color.LightCoral;
+            this.dgrid_MauSac.BackgroundColor = System.Drawing.Color.SeaShell;
             this.dgrid_MauSac.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_MauSac.Location = new System.Drawing.Point(0, 272);
             this.dgrid_MauSac.Name = "dgrid_MauSac";
@@ -257,12 +257,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(807, 461);
             this.Controls.Add(this.dgrid_MauSac);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txt_TimKiem);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMauSac";
             this.Text = "FrmMauSac";
             this.Load += new System.EventHandler(this.FrmMauSac_Load);

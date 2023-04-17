@@ -243,7 +243,7 @@
             // 
             // dgrid_Size
             // 
-            this.dgrid_Size.BackgroundColor = System.Drawing.Color.LightCoral;
+            this.dgrid_Size.BackgroundColor = System.Drawing.Color.SeaShell;
             this.dgrid_Size.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_Size.Location = new System.Drawing.Point(-2, 284);
             this.dgrid_Size.Name = "dgrid_Size";
@@ -258,12 +258,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txt_TimKiem);
             this.Controls.Add(this.dgrid_Size);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSize";
             this.Text = "FrmSize";
             this.groupBox1.ResumeLayout(false);

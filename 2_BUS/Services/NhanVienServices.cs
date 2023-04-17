@@ -103,6 +103,11 @@ namespace _2_BUS.Services
             _INhanVienRepository.updateNhanVien(update);
             return true;
         }
+        public bool updateSanPhamChiTiets(NhanVien nhanVien)
+        {
+            _INhanVienRepository.updateNhanVien(nhanVien);
+            return true;
+        }
     }
 }
 

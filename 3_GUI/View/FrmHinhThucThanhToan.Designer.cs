@@ -243,13 +243,13 @@
             // 
             // dgrid_HTTT
             // 
-            this.dgrid_HTTT.BackgroundColor = System.Drawing.Color.LightCoral;
+            this.dgrid_HTTT.BackgroundColor = System.Drawing.Color.SeaShell;
             this.dgrid_HTTT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_HTTT.Location = new System.Drawing.Point(1, 294);
             this.dgrid_HTTT.Name = "dgrid_HTTT";
             this.dgrid_HTTT.RowHeadersWidth = 51;
             this.dgrid_HTTT.RowTemplate.Height = 29;
-            this.dgrid_HTTT.Size = new System.Drawing.Size(805, 155);
+            this.dgrid_HTTT.Size = new System.Drawing.Size(794, 155);
             this.dgrid_HTTT.TabIndex = 3;
             this.dgrid_HTTT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_HTTT_CellContentClick);
             // 
@@ -257,13 +257,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgrid_HTTT);
             this.Controls.Add(this.txt_TimKiem);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.ForeColor = System.Drawing.Color.LightCoral;
+            this.ForeColor = System.Drawing.Color.SeaShell;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmHinhThucThanhToan";
             this.Text = "Hình thức thanh toán";
             this.groupBox1.ResumeLayout(false);

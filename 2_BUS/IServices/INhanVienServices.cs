@@ -13,6 +13,7 @@ namespace _2_BUS.IServices
         bool AddNhanVien(ViewNhanVien nhanVien);
         bool UpdateNhanVien(ViewNhanVien nhanVien);
         bool DeleteNhanVien(Guid ID);
+        bool updateSanPhamChiTiets(NhanVien nhanVien);
         public List<NhanVien> GetAllNhanVien();
         //public List<NhanVien> GetAllNhanVien(string gmail);
         public List<ViewNhanVien> GetAllViewNhanVien();

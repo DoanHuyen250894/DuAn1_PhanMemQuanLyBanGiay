@@ -26,6 +26,7 @@ namespace _3_GUI.View
             _inhaCCServices= new NhaCCServices();
             _ncc= new NhaCungCap();
             rbtn_HD.Checked = true;
+            txt_Ma.Enabled = false;
             LoadDataFormDb();
 
         }

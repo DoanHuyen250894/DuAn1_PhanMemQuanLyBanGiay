@@ -28,130 +28,128 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHoaDon));
-			dtg_hd = new System.Windows.Forms.DataGridView();
-			groupBox1 = new System.Windows.Forms.GroupBox();
-			btn_Xoa = new RJControls.RJButton();
-			btn_TimKiem = new RJControls.RJButton();
-			textBox1 = new System.Windows.Forms.TextBox();
-			groupBox2 = new System.Windows.Forms.GroupBox();
-			dtg_hdct = new System.Windows.Forms.DataGridView();
-			((System.ComponentModel.ISupportInitialize)dtg_hd).BeginInit();
-			groupBox1.SuspendLayout();
-			groupBox2.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)dtg_hdct).BeginInit();
-			SuspendLayout();
-			// 
-			// dtg_hd
-			// 
-			dtg_hd.BackgroundColor = System.Drawing.Color.LightCoral;
-			dtg_hd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dtg_hd.Location = new System.Drawing.Point(0, 60);
-			dtg_hd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			dtg_hd.Name = "dtg_hd";
-			dtg_hd.RowHeadersWidth = 51;
-			dtg_hd.RowTemplate.Height = 29;
-			dtg_hd.Size = new System.Drawing.Size(1066, 291);
-			dtg_hd.TabIndex = 0;
-			dtg_hd.CellClick += dtg_hd_CellClick;
-			// 
-			// groupBox1
-			// 
-			groupBox1.Controls.Add(btn_Xoa);
-			groupBox1.Controls.Add(btn_TimKiem);
-			groupBox1.Controls.Add(textBox1);
-			groupBox1.Controls.Add(dtg_hd);
-			groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			groupBox1.Location = new System.Drawing.Point(12, 11);
-			groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			groupBox1.Name = "groupBox1";
-			groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			groupBox1.Size = new System.Drawing.Size(1071, 355);
-			groupBox1.TabIndex = 2;
-			groupBox1.TabStop = false;
-			groupBox1.Text = "Hóa đơn";
-			// 
-			// btn_Xoa
-			// 
-			btn_Xoa.BackColor = System.Drawing.Color.MediumSeaGreen;
-			btn_Xoa.FlatAppearance.BorderSize = 0;
-			btn_Xoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			btn_Xoa.ForeColor = System.Drawing.Color.White;
-			btn_Xoa.Image = (System.Drawing.Image)resources.GetObject("btn_Xoa.Image");
-			btn_Xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			btn_Xoa.Location = new System.Drawing.Point(381, 24);
-			btn_Xoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			btn_Xoa.Name = "btn_Xoa";
-			btn_Xoa.Size = new System.Drawing.Size(131, 28);
-			btn_Xoa.TabIndex = 3;
-			btn_Xoa.Text = "Xóa";
-			btn_Xoa.UseVisualStyleBackColor = false;
-			// 
-			// btn_TimKiem
-			// 
-			btn_TimKiem.BackColor = System.Drawing.Color.MediumSeaGreen;
-			btn_TimKiem.FlatAppearance.BorderSize = 0;
-			btn_TimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			btn_TimKiem.ForeColor = System.Drawing.Color.White;
-			btn_TimKiem.Image = (System.Drawing.Image)resources.GetObject("btn_TimKiem.Image");
-			btn_TimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			btn_TimKiem.Location = new System.Drawing.Point(244, 25);
-			btn_TimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			btn_TimKiem.Name = "btn_TimKiem";
-			btn_TimKiem.Size = new System.Drawing.Size(131, 28);
-			btn_TimKiem.TabIndex = 2;
-			btn_TimKiem.Text = "Tìm kiếm";
-			btn_TimKiem.UseVisualStyleBackColor = false;
-			// 
-			// textBox1
-			// 
-			textBox1.Location = new System.Drawing.Point(0, 27);
-			textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			textBox1.Name = "textBox1";
-			textBox1.Size = new System.Drawing.Size(239, 29);
-			textBox1.TabIndex = 1;
-			textBox1.Text = "Tìm kiếm...";
-			// 
-			// groupBox2
-			// 
-			groupBox2.Controls.Add(dtg_hdct);
-			groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-			groupBox2.Location = new System.Drawing.Point(12, 370);
-			groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			groupBox2.Name = "groupBox2";
-			groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			groupBox2.Size = new System.Drawing.Size(1072, 345);
-			groupBox2.TabIndex = 3;
-			groupBox2.TabStop = false;
-			groupBox2.Text = "Hóa đơn chi tiết";
-			// 
-			// dtg_hdct
-			// 
-			dtg_hdct.BackgroundColor = System.Drawing.Color.LightCoral;
-			dtg_hdct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dtg_hdct.Location = new System.Drawing.Point(6, 26);
-			dtg_hdct.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			dtg_hdct.Name = "dtg_hdct";
-			dtg_hdct.RowHeadersWidth = 51;
-			dtg_hdct.RowTemplate.Height = 29;
-			dtg_hdct.Size = new System.Drawing.Size(1060, 315);
-			dtg_hdct.TabIndex = 0;
-			// 
-			// FrmHoaDon
-			// 
-			AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-			AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			ClientSize = new System.Drawing.Size(1095, 722);
-			Controls.Add(groupBox1);
-			Controls.Add(groupBox2);
-			Name = "FrmHoaDon";
-			Text = "FrmHoaDon";
-			((System.ComponentModel.ISupportInitialize)dtg_hd).EndInit();
-			groupBox1.ResumeLayout(false);
-			groupBox1.PerformLayout();
-			groupBox2.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)dtg_hdct).EndInit();
-			ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHoaDon));
+            this.dtg_hd = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Xoa = new _3_GUI.RJControls.RJButton();
+            this.btn_TimKiem = new _3_GUI.RJControls.RJButton();
+            this.tb_timkiem = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtg_hdct = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_hd)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_hdct)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dtg_hd
+            // 
+            this.dtg_hd.BackgroundColor = System.Drawing.Color.SeaShell;
+            this.dtg_hd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_hd.Location = new System.Drawing.Point(0, 80);
+            this.dtg_hd.Name = "dtg_hd";
+            this.dtg_hd.RowHeadersWidth = 51;
+            this.dtg_hd.RowTemplate.Height = 29;
+            this.dtg_hd.Size = new System.Drawing.Size(1103, 217);
+            this.dtg_hd.TabIndex = 0;
+            this.dtg_hd.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_hd_CellClick_1);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btn_Xoa);
+            this.groupBox1.Controls.Add(this.btn_TimKiem);
+            this.groupBox1.Controls.Add(this.tb_timkiem);
+            this.groupBox1.Controls.Add(this.dtg_hd);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox1.Location = new System.Drawing.Point(14, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1117, 303);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Hóa đơn";
+            // 
+            // btn_Xoa
+            // 
+            this.btn_Xoa.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_Xoa.FlatAppearance.BorderSize = 0;
+            this.btn_Xoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Xoa.ForeColor = System.Drawing.Color.White;
+            this.btn_Xoa.Image = ((System.Drawing.Image)(resources.GetObject("btn_Xoa.Image")));
+            this.btn_Xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Xoa.Location = new System.Drawing.Point(435, 32);
+            this.btn_Xoa.Name = "btn_Xoa";
+            this.btn_Xoa.Size = new System.Drawing.Size(150, 37);
+            this.btn_Xoa.TabIndex = 3;
+            this.btn_Xoa.Text = "Xóa";
+            this.btn_Xoa.UseVisualStyleBackColor = false;
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click_1);
+            // 
+            // btn_TimKiem
+            // 
+            this.btn_TimKiem.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_TimKiem.FlatAppearance.BorderSize = 0;
+            this.btn_TimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_TimKiem.ForeColor = System.Drawing.Color.White;
+            this.btn_TimKiem.Image = ((System.Drawing.Image)(resources.GetObject("btn_TimKiem.Image")));
+            this.btn_TimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_TimKiem.Location = new System.Drawing.Point(279, 33);
+            this.btn_TimKiem.Name = "btn_TimKiem";
+            this.btn_TimKiem.Size = new System.Drawing.Size(150, 37);
+            this.btn_TimKiem.TabIndex = 2;
+            this.btn_TimKiem.Text = "Tìm kiếm";
+            this.btn_TimKiem.UseVisualStyleBackColor = false;
+            this.btn_TimKiem.Click += new System.EventHandler(this.btn_TimKiem_Click_1);
+            // 
+            // tb_timkiem
+            // 
+            this.tb_timkiem.Location = new System.Drawing.Point(0, 36);
+            this.tb_timkiem.Name = "tb_timkiem";
+            this.tb_timkiem.Size = new System.Drawing.Size(273, 34);
+            this.tb_timkiem.TabIndex = 1;
+            this.tb_timkiem.TextChanged += new System.EventHandler(this.tb_timkiem_TextChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dtg_hdct);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.groupBox2.Location = new System.Drawing.Point(14, 324);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1117, 306);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Hóa đơn chi tiết";
+            // 
+            // dtg_hdct
+            // 
+            this.dtg_hdct.BackgroundColor = System.Drawing.Color.SeaShell;
+            this.dtg_hdct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_hdct.Location = new System.Drawing.Point(7, 35);
+            this.dtg_hdct.Name = "dtg_hdct";
+            this.dtg_hdct.RowHeadersWidth = 51;
+            this.dtg_hdct.RowTemplate.Height = 29;
+            this.dtg_hdct.Size = new System.Drawing.Size(1096, 260);
+            this.dtg_hdct.TabIndex = 0;
+            this.dtg_hdct.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtg_hdct_CellContentClick);
+            // 
+            // FrmHoaDon
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SeaShell;
+            this.ClientSize = new System.Drawing.Size(1132, 642);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "FrmHoaDon";
+            this.Text = "FrmHoaDon";
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_hd)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_hdct)).EndInit();
+            this.ResumeLayout(false);
+
 		}
 
 		#endregion
@@ -160,7 +158,7 @@
 		private System.Windows.Forms.GroupBox groupBox1;
 		private RJControls.RJButton btn_Xoa;
 		private RJControls.RJButton btn_TimKiem;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox tb_timkiem;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.DataGridView dtg_hdct;
 	}

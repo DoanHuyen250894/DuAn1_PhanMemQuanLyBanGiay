@@ -57,4 +57,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="printDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        sLAAwnH+AZwHnazV1XMhAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>

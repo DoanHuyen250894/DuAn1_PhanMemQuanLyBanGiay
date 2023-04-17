@@ -25,6 +25,7 @@ namespace _3_GUI.View
             _imauSacServices = new MauSacServices();
             _ms = new MauSac();
             rbtn_HD.Checked = true;
+            txt_Ma.Enabled = false;
             LoadDataFormDb();
 
         }
@@ -74,7 +75,7 @@ namespace _3_GUI.View
         }
         public bool checknhap()
         {
-            if (txt_Ma.Text == "" || txt_Ten.Text == "") return false;
+            if ( txt_Ten.Text == "") return false;
             return true;
         }
         private void dgrid_MauSac_CellContentClick(object sender, DataGridViewCellEventArgs e)

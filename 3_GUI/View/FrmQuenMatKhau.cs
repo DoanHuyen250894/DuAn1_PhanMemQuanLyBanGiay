@@ -15,30 +15,39 @@ namespace _3_GUI.View
 {
     public partial class FrmQuenMatKhau : Form
     {
+        private INhanVienServices _inhanVienServices;
         public NhanVien _nv;
-        INhanVienServices _INhanVienServices;
         public FrmQuenMatKhau()
         {
             InitializeComponent();
-            _INhanVienServices = new NhanVienServices();
+            _inhanVienServices = new NhanVienServices();
         }
 
         private void FrmQuenMatKhau_Load(object sender, EventArgs e)
         {
-            lb_loichao.Text = "Xin chao:" + _nv.HoTen;
-            tb_ma.Text = _nv.Username;
-            tb_ma.Enabled = false;
-            tb_email.Text = _nv.Email;
-            tb_email.Enabled = false;
+           
         }
 
         private void btn_xacnhan_Click(object sender, EventArgs e)
         {
-            var a = _INhanVienServices.GetAllViewNhanVien().FirstOrDefault(c => c.Email == tb_email.Text).ID;
-            var d = _INhanVienServices.GetAllViewNhanVien().FirstOrDefault(p => p.ID == a);
-            d.MatKhau = tb_pass.Text;
-            _INhanVienServices.UpdateNhanVien(d);
-            MessageBox.Show("Thay doi mat khau thanh cong, Ban se duoc dua tro lai trang dang nhap");
+           
+        }
+
+        private void FrmQuenMatKhau_Load_1(object sender, EventArgs e)
+        {
+            txt_user.Text = _nv.Username;
+            txt_user.Enabled = false;
+            txt_gmail.Text = _nv.Email;
+            txt_gmail.Enabled = false;
+        }
+
+        private void btn_XacNhan_Click_1(object sender, EventArgs e)
+        {
+            var a = _inhanVienServices.GetAllNhanVien().FirstOrDefault(c => c.Email == txt_gmail.Text).ID;
+            var d = _inhanVienServices.GetAllNhanVien().FirstOrDefault(p => p.ID == a);
+            d.MatKhau = txt_pass.Text;
+            _inhanVienServices.updateSanPhamChiTiets(d);
+            MessageBox.Show("Thay đổi mật khẩu thành công");
             this.Hide();
             FrmDangNhap frmdn = new FrmDangNhap();
             frmdn.ShowDialog();

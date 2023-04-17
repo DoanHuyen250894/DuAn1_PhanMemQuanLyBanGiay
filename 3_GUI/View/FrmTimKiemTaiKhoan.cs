@@ -29,6 +29,18 @@ namespace _3_GUI.View
 
         private void btn_guima_Click(object sender, EventArgs e)
         {
+            
+            
+        }
+
+        private void btn_xn_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btn_guima_Click_1(object sender, EventArgs e)
+        {
+            
             NhanVien nv = _INvRp.GetCheck(tb_gmail.Text);
             if (nv == null)
             {
@@ -72,7 +84,7 @@ namespace _3_GUI.View
             }
         }
 
-        private void btn_xn_Click(object sender, EventArgs e)
+        private void btn_xn_Click_1(object sender, EventArgs e)
         {
             NhanVien nv = _INvRp.GetCheck(tb_gmail.Text);
             if (otp != Convert.ToInt32(tb_ma.Text))
@@ -85,6 +97,9 @@ namespace _3_GUI.View
                 FrmQuenMatKhau frmqmk = new FrmQuenMatKhau();
                 frmqmk._nv = nv;
                 frmqmk.ShowDialog();
+                FrmTimKiemTaiKhoan fr = new FrmTimKiemTaiKhoan();
+                fr.Close();
+
             }
         }
     }

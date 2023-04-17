@@ -53,7 +53,7 @@
             // 
             // dgrid_NCC
             // 
-            this.dgrid_NCC.BackgroundColor = System.Drawing.Color.LightCoral;
+            this.dgrid_NCC.BackgroundColor = System.Drawing.Color.SeaShell;
             this.dgrid_NCC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_NCC.Location = new System.Drawing.Point(4, 285);
             this.dgrid_NCC.Name = "dgrid_NCC";
@@ -257,12 +257,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(832, 452);
             this.Controls.Add(this.dgrid_NCC);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txt_TimKiem);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmNhaCC";
             this.Text = "FrmNhaCC";
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_NCC)).EndInit();

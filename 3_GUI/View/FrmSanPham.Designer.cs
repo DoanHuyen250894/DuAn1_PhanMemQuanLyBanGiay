@@ -53,7 +53,7 @@
             // 
             // dgrid_SP
             // 
-            this.dgrid_SP.BackgroundColor = System.Drawing.Color.LightCoral;
+            this.dgrid_SP.BackgroundColor = System.Drawing.Color.SeaShell;
             this.dgrid_SP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_SP.Location = new System.Drawing.Point(-2, 284);
             this.dgrid_SP.Name = "dgrid_SP";
@@ -251,18 +251,19 @@
             this.groupBox1.Size = new System.Drawing.Size(536, 232);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Hình thức thanh toán";
+            this.groupBox1.Text = "Sản phẩm";
             // 
             // FrmSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgrid_SP);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txt_TimKiem);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSanPham";
             this.Text = "FrmSanPham";
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_SP)).EndInit();

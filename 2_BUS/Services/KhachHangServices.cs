@@ -74,5 +74,14 @@ namespace _2_BUS.Services
             _IkhachHangRepository.Update(update);
             return true;
         }
+        public KhachHang GetByID(Guid ID)
+        {
+            return _IkhachHangRepository.GetByID(ID);
+        }
+        public bool UpdateKhachHang(KhachHang obj)
+        {
+            _IkhachHangRepository.Update(obj);
+            return true;
+        }
     }
 }

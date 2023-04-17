@@ -53,7 +53,7 @@
             // 
             // dgrid_LoaiSanPham
             // 
-            this.dgrid_LoaiSanPham.BackgroundColor = System.Drawing.Color.LightCoral;
+            this.dgrid_LoaiSanPham.BackgroundColor = System.Drawing.Color.SeaShell;
             this.dgrid_LoaiSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_LoaiSanPham.Location = new System.Drawing.Point(-2, 284);
             this.dgrid_LoaiSanPham.Name = "dgrid_LoaiSanPham";
@@ -257,12 +257,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.SeaShell;
             this.ClientSize = new System.Drawing.Size(800, 448);
             this.Controls.Add(this.dgrid_LoaiSanPham);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txt_TimKiem);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmLoaiSanPham";
             this.Text = "FrmLoaiSanPham";
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_LoaiSanPham)).EndInit();

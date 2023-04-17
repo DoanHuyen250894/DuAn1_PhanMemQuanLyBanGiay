@@ -26,6 +26,7 @@ namespace _3_GUI.View
 			_km = new KhuyenMai();
 			rbtn_HD.Checked = true;
 			LoadDataFormDb();
+            txt_Ma.Enabled = false;
 		}
 
 		public void LoadDataFormDb()
@@ -93,134 +94,179 @@ namespace _3_GUI.View
 
 		private void btn_Them_Click(object sender, EventArgs e)
 		{
-			var p = _ikhuyenMaiServices.GetAll().FirstOrDefault(x => x.Ma == txt_Ma.Text);
-			if (checknhap() == false)
-			{
-				MessageBox.Show("Không được để trống các trường", "Chú ý");
-			}
-			else if (p != null)
-			{
-				MessageBox.Show("Mã đã tồn tại", "Chú ý");
-			}
-			else
-			{
-				OpenFileDialog op = new OpenFileDialog();
-				DialogResult dialog = MessageBox.Show("Bạn có muốn thêm  không?", "Thêm", MessageBoxButtons.YesNo);
-				if (dialog == DialogResult.Yes)
-				{
-					var a = new KhuyenMai()
-					{
-						ID = new Guid(),
-						Ma = txt_Ma.Text,
-						Ten = txt_Ten.Text,
-						TrangThai = rbtn_HD.Checked == true ? 1 : 0,
-						HinhThuc = txt_hinhthuc.Text,
-						NgayBatDau = date1.Value,
-						NgayKetThuc = date2.Value
-
-					};
-					_ikhuyenMaiServices.Add(a);
-					MessageBox.Show("Thêm thành công");
-					Reset();
-				}
-			}
+			
 		}
 
 		private void btn_Sua_Click(object sender, EventArgs e)
 		{
-			if (_km == null)
-			{
-				MessageBox.Show("Không tìm thấy mã khuyến mãi", "Cảnh báo");
-			}
-			else if (checknhap() == false)
-			{
-				MessageBox.Show("Không được để trống các trường", "Chú ý");
-			}
-			else
-			{
-				OpenFileDialog op = new OpenFileDialog();
-				DialogResult dialog = MessageBox.Show("Bạn có muốn sửa không?", "Sửa", MessageBoxButtons.YesNo);
-				if (dialog == DialogResult.Yes)
-				{
-					if (_km.Ma == txt_Ma.Text || _km.Ma != txt_Ma.Text && _ikhuyenMaiServices.GetAll().FirstOrDefault(c => c.Ma == txt_Ma.Text) == null)
-					{
-						_km.Ma = txt_Ma.Text;
-						_km.Ten = txt_Ten.Text;
-						_km.HinhThuc = txt_hinhthuc.Text;
-						_km.NgayKetThuc = date2.Value;
-						_km.NgayBatDau = date1.Value;
-						_km.TrangThai = rbtn_HD.Checked ? 1 : 0;
-						_ikhuyenMaiServices.Update(_km);
-						MessageBox.Show("Sửa thành công");
-						Reset();
-					}
-					else
-					{
-						MessageBox.Show("Không thành công");
-					}
-				}
-			}
+			
 		}
 
 		private void btn_Xoa_Click(object sender, EventArgs e)
 		{
-			DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo);
-			if (dialogResult == DialogResult.Yes)
-			{
-				if (_km == null)
-				{
-					MessageBox.Show("Không tìm thấy");
-				}
-				else
-				{
-					_ikhuyenMaiServices.Delete(_km);
-					MessageBox.Show("Xóa thành công");
-					Reset();
-				}
-			}
+		
 		}
 
 		private void btn_Reset_Click(object sender, EventArgs e)
 		{
-			Reset();
+			
 		}
 
 		private void txt_TimKiem_TextChanged(object sender, EventArgs e)
 		{
-			LoadDataFormDb(txt_TimKiem.Text);
+			
 		}
 
 		private void txt_TimKiem_Leave(object sender, EventArgs e)
 		{
-			txt_TimKiem.Text = "Tìm kiếm...";
+			
 		}
 
 		private void txt_TimKiem_MouseClick(object sender, MouseEventArgs e)
 		{
-			txt_TimKiem.Text = "";
+			
 		}
 
 		private void txt_Ten_TextChanged(object sender, EventArgs e)
 		{
-			txt_Ma.Text = "TH" + Utilities.Utilities.GetMaTuSinh(txt_Ten.Text) + (_ikhuyenMaiServices.GetAll().Count + 1);
+			
 		}
 
 		private void dgrid_KM_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
-			int row = e.RowIndex;
-			if (row >= 0)
-			{
-				DataGridViewRow r = dgrid_KM.Rows[e.RowIndex];
-				_km = _ikhuyenMaiServices.GetAll().FirstOrDefault(c => c.ID == Guid.Parse(r.Cells[0].Value.ToString()));
-				txt_Ma.Text = r.Cells[1].Value.ToString();
-				txt_Ten.Text = r.Cells[2].Value.ToString();
-				rbtn_HD.Checked = r.Cells[6].Value.ToString() == "Hoạt động";
-				rbtn_KHD.Checked = r.Cells[6].Value.ToString() == "Không hoạt động";
-				txt_hinhthuc.Text = r.Cells[3].Value.ToString();
-				date1.Text = r.Cells[4].Value.ToString();
-				date2.Text = r.Cells[5].Value.ToString();
-			}
 		}
-	}
+
+        private void btn_Them_Click_1(object sender, EventArgs e)
+        {
+            var p = _ikhuyenMaiServices.GetAll().FirstOrDefault(x => x.Ma == txt_Ma.Text);
+            if (checknhap() == false)
+            {
+                MessageBox.Show("Không được để trống các trường", "Chú ý");
+            }
+            else if (p != null)
+            {
+                MessageBox.Show("Mã đã tồn tại", "Chú ý");
+            }
+            else
+            {
+                OpenFileDialog op = new OpenFileDialog();
+                DialogResult dialog = MessageBox.Show("Bạn có muốn thêm  không?", "Thêm", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
+                {
+                    var a = new KhuyenMai()
+                    {
+                        ID = new Guid(),
+                        Ma = txt_Ma.Text,
+                        Ten = txt_Ten.Text,
+                        TrangThai = rbtn_HD.Checked == true ? 1 : 0,
+                        HinhThuc = txt_hinhthuc.Text,
+                        NgayBatDau = date1.Value,
+                        NgayKetThuc = date2.Value
+
+                    };
+                    _ikhuyenMaiServices.Add(a);
+                    MessageBox.Show("Thêm thành công");
+                    Reset();
+                }
+            }
+        }
+
+        private void btn_Sua_Click_1(object sender, EventArgs e)
+        {
+            if (_km == null)
+            {
+                MessageBox.Show("Không tìm thấy mã khuyến mãi", "Cảnh báo");
+            }
+            else if (checknhap() == false)
+            {
+                MessageBox.Show("Không được để trống các trường", "Chú ý");
+            }
+            else
+            {
+                OpenFileDialog op = new OpenFileDialog();
+                DialogResult dialog = MessageBox.Show("Bạn có muốn sửa không?", "Sửa", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
+                {
+                    if (_km.Ma == txt_Ma.Text || _km.Ma != txt_Ma.Text && _ikhuyenMaiServices.GetAll().FirstOrDefault(c => c.Ma == txt_Ma.Text) == null)
+                    {
+                        _km.Ma = txt_Ma.Text;
+                        _km.Ten = txt_Ten.Text;
+                        _km.HinhThuc = txt_hinhthuc.Text;
+                        _km.NgayKetThuc = date2.Value;
+                        _km.NgayBatDau = date1.Value;
+                        _km.TrangThai = rbtn_HD.Checked ? 1 : 0;
+                        _ikhuyenMaiServices.Update(_km);
+                        MessageBox.Show("Sửa thành công");
+                        Reset();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thành công");
+                    }
+                }
+            }
+        }
+
+        private void btn_Xoa_Click_1(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (_km == null)
+                {
+                    MessageBox.Show("Không tìm thấy");
+                }
+                else
+                {
+                    _ikhuyenMaiServices.Delete(_km);
+                    MessageBox.Show("Xóa thành công");
+                    Reset();
+                }
+            }
+        }
+
+        private void btn_Reset_Click_1(object sender, EventArgs e)
+        {
+			Reset();
+        }
+
+        private void txt_TimKiem_TextChanged_1(object sender, EventArgs e)
+        {
+            LoadDataFormDb(txt_TimKiem.Text);
+        }
+
+        private void txt_TimKiem_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            txt_TimKiem.Text = "";
+        }
+
+        private void txt_TimKiem_Leave_1(object sender, EventArgs e)
+        {
+            txt_TimKiem.Text = "Tìm kiếm...";
+        }
+
+        private void txt_Ten_TextChanged_1(object sender, EventArgs e)
+        {
+            txt_Ma.Text = "TH" + Utilities.Utilities.GetMaTuSinh(txt_Ten.Text) + (_ikhuyenMaiServices.GetAll().Count + 1);
+        }
+
+        private void dgrid_KM_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row >= 0)
+            {
+                DataGridViewRow r = dgrid_KM.Rows[e.RowIndex];
+                _km = _ikhuyenMaiServices.GetAll().FirstOrDefault(c => c.ID == Guid.Parse(r.Cells[0].Value.ToString()));
+                txt_Ma.Text = r.Cells[1].Value.ToString();
+                txt_Ten.Text = r.Cells[2].Value.ToString();
+                rbtn_HD.Checked = r.Cells[6].Value.ToString() == "Hoạt động";
+                rbtn_KHD.Checked = r.Cells[6].Value.ToString() == "Không hoạt động";
+                txt_hinhthuc.Text = r.Cells[3].Value.ToString();
+                date1.Text = r.Cells[4].Value.ToString();
+                date2.Text = r.Cells[5].Value.ToString();
+            }
+
+        }
+    }
 }
 

@@ -39,7 +39,7 @@ namespace _2_BUS.Services
             NgayTao = obj.NgayTao,
             NgayThanhToan = obj.NgayThanhToan,
             TrangThai = obj.TrangThai,
-            
+            ThanhTien = obj.ThanhTien,
             };
             if (_ihoaDonRepository.Add(hd)) return "Thêm thành công";
             return "Không thành công";
@@ -63,7 +63,7 @@ namespace _2_BUS.Services
                 NgayTao = obj.NgayTao,
                 NgayThanhToan = obj.NgayThanhToan,
                 TrangThai = obj.TrangThai,
-
+                ThanhTien = obj.ThanhTien,
             };
             if (_ihoaDonRepository.Update(hd)) return "Sửa thành công";
             return "Không thành công";
@@ -87,7 +87,7 @@ namespace _2_BUS.Services
                 NgayTao = obj.NgayTao,
                 NgayThanhToan = obj.NgayThanhToan,
                 TrangThai = obj.TrangThai,
-
+                ThanhTien = obj.ThanhTien,
             };
             if (_ihoaDonRepository.Delete(hd)) return "Xóa thành công";
             return "Không thành công";
@@ -114,6 +114,7 @@ namespace _2_BUS.Services
                          TenNV = c.HoTen,
                          TenHTTT= d.Ten,
                          SDT = b.SDT,
+                         ThanhTien = a.ThanhTien,
 
                      }).ToList();
             return lsthd;
@@ -135,6 +136,7 @@ namespace _2_BUS.Services
                       TenKH = b.HovaTen,
                       TenNV= c.HoTen,
                       SDT = b.SDT,
+                      ThanhTien = a.ThanhTien,
                     
                       } ).ToList();
             return lsthd;

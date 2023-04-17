@@ -28,7 +28,7 @@ namespace _2_BUS.ViewMolder
 		public int SoLuongTon { get; set; }
 		public decimal GiaBan { get; set; }
 		public decimal GiaNhap { get; set; }
-		public string HinhAnh { get; set; }
+		public string? HinhAnh { get; set; }
 		public int TrangThai { get; set; }
 		public string MoTa { get; set; }
 	}

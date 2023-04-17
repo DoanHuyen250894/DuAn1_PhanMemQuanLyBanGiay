@@ -26,6 +26,7 @@ namespace _3_GUI.View
             _iNSXServices = new NSXServices();
             _nsx = new NSX();
             rbtn_HD.Checked= true;
+            txt_Ma.Enabled = false;
             LoadDataFormDb();
         }
         public void LoadDataFormDb()

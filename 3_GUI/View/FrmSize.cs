@@ -24,6 +24,7 @@ namespace _3_GUI.View
             _iSizeServices = new SizeServices();
            _size = new KichThuoc();
             rbtn_HD.Checked = true;
+            txt_Ma.Enabled = false;
             LoadDataFormDb();
         }
         public void LoadDataFormDb()
@@ -70,7 +71,7 @@ namespace _3_GUI.View
         }
         public bool checknhap()
         {
-            if (txt_Ma.Text == "" || txt_Ten.Text == "") return false;
+            if ( txt_Ten.Text == "") return false;
             return true;
         }
 

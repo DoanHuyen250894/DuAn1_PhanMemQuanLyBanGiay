@@ -44,5 +44,10 @@ namespace _1_DAL.Repository
             _dbContext.SaveChanges();
             return true;
         }
+
+        public KhachHang GetByID(Guid id)
+        {
+            return _dbContext.KhachHangs.FirstOrDefault(c => c.ID == id);
+        }
     }
 }

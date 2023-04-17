@@ -27,7 +27,7 @@ namespace _3_GUI.View
             _cv = new ChucVu();
             rbtn_HD.Checked = true;
             LoadDataFormDb();
-            txt_Ma.Visible = false;
+            txt_Ma.Enabled = false;
         }
         public void LoadDataFormDb()
         {
@@ -73,11 +73,54 @@ namespace _3_GUI.View
         }
         public bool checknhap()
         {
-            if (txt_Ma.Text == "" || txt_Ten.Text == "") return false;
+            if (  txt_Ten.Text == "") return false;
             return true;
         }
 
         private void dgrid_CV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void btn_Them_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btn_Reset_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void txt_TimKiem_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txt_TimKiem_Leave(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void txt_TimKiem_MouseClick(object sender, MouseEventArgs e)
+        {
+            txt_TimKiem.Text = "";
+        }
+
+        private void txt_Ten_TextChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void dgrid_CV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = e.RowIndex;
             if (row >= 0)
@@ -92,8 +135,9 @@ namespace _3_GUI.View
             }
         }
 
-        private void btn_Them_Click(object sender, EventArgs e)
+        private void btn_Them_Click_1(object sender, EventArgs e)
         {
+
             var p = _ichucVuServices.GetAll().FirstOrDefault(x => x.Ma == txt_Ma.Text);
             if (checknhap() == false)
             {
@@ -123,10 +167,9 @@ namespace _3_GUI.View
                     Reset();
                 }
             }
-
         }
 
-        private void btn_Sua_Click(object sender, EventArgs e)
+        private void btn_Sua_Click_1(object sender, EventArgs e)
         {
             if (_cv == null)
             {
@@ -160,8 +203,9 @@ namespace _3_GUI.View
             }
         }
 
-        private void btn_Xoa_Click(object sender, EventArgs e)
+        private void btn_Xoa_Click_1(object sender, EventArgs e)
         {
+
             DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -178,27 +222,29 @@ namespace _3_GUI.View
             }
         }
 
-        private void btn_Reset_Click(object sender, EventArgs e)
+        private void btn_Reset_Click_1(object sender, EventArgs e)
         {
             Reset();
+
         }
 
-        private void txt_TimKiem_TextChanged(object sender, EventArgs e)
-        {
-            LoadDataFormDb(txt_TimKiem.Text);
-        }
-
-        private void txt_TimKiem_Leave(object sender, EventArgs e)
-        {
-            txt_TimKiem.Text = "Tìm kiếm...";
-        }
-
-        private void txt_TimKiem_MouseClick(object sender, MouseEventArgs e)
+        private void txt_TimKiem_MouseClick_1(object sender, MouseEventArgs e)
         {
             txt_TimKiem.Text = "";
         }
 
-        private void txt_Ten_TextChanged(object sender, EventArgs e)
+        private void txt_TimKiem_Leave_1(object sender, EventArgs e)
+        {
+            txt_TimKiem.Text = "Tìm kiếm...";
+
+        }
+
+        private void txt_TimKiem_TextChanged_1(object sender, EventArgs e)
+        {
+            LoadDataFormDb(txt_TimKiem.Text);
+        }
+
+        private void txt_Ten_TextChanged_1(object sender, EventArgs e)
         {
             txt_Ma.Text = "TH" + Utilities.Utilities.GetMaTuSinh(txt_Ten.Text) + (_ichucVuServices.GetAll().Count + 1);
         }
